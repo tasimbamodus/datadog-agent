@@ -50,10 +50,12 @@ func (c *KubeMetadataCollector) Detect(out chan<- []*TagInfo) (CollectionMode, e
 	}
 	// if no DCA or can't communicate with the DCA run the local service mapper.
 	if config.Datadog.GetBool("cluster_agent.enabled") {
-		c.clusterAgentEnabled = true
+		c.clusterAgentEnabled = false
 		c.dcaClient, errDCA = clusteragent.GetClusterAgentClient()
 		if errDCA != nil {
 			log.Errorf("Could not initialise the communication with the DCA, falling back to local service mapping: %s", errDCA.Error())
+		} else {
+			c.clusterAgentEnabled = true
 		}
 	}
 	if !config.Datadog.GetBool("cluster_agent.enabled") || errDCA != nil {
