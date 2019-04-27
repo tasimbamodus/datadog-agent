@@ -1,9 +1,9 @@
 source 'https://supermarket.chef.io'
 
 cookbook 'datadog', '~>2.18.0', git: "https://github.com/datadog/chef-datadog.git"
-cookbook 'apt', '~> 3.0'
-cookbook 'yum', '< 5.0'
-cookbook 'windows', '~> 3.4.3'
+cookbook 'apt', '~> 7.1.1'
+cookbook 'yum', '~> 5.1.0'
+cookbook 'windows', '~> 6.0.0'
 cookbook 'dd-agent-install', path: './site-cookbooks/dd-agent-install'
 cookbook 'dd-agent-upgrade', path: './site-cookbooks/dd-agent-upgrade'
 cookbook 'dd-agent-install-script', path: './site-cookbooks/dd-agent-install-script'
